@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { scroll-behavior: smooth; }
+  body {
+    @apply font-body text-stone-900 bg-[#f8f6f1];
+    min-height: 100vh;
+    background-image: radial-gradient(rgba(67, 56, 42, 0.06) 0.7px, transparent 0.7px);
+    background-size: 7px 7px;
+  }
+  h1, h2, h3, h4 { @apply font-display font-bold; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { @apply bg-orange-50; }
+  ::-webkit-scrollbar-thumb { @apply bg-primary-500 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-primary-600; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold px-6 py-3 rounded-full
+           hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-2xl
+           transform hover:scale-105 active:scale-95 transition-all duration-300;
+  }
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-600 font-semibold px-6 py-3 rounded-full
+           hover:bg-primary-500 hover:text-white transition-all duration-300;
+  }
+  .card {
+    @apply bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl
+           transition-all duration-500 overflow-hidden;
+  }
+  .glass {
+    @apply bg-white/40 backdrop-blur-lg border border-white/50 rounded-2xl;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-primary-500
+           focus:ring-2 focus:ring-primary-200 outline-none transition;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-500 via-orange-500 to-teal-500 bg-clip-text text-transparent;
+  }
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold text-center mb-4;
+  }
+  .loader {
+    @apply w-12 h-12 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin;
+  }
+}
+
+/* Slick carousel overrides */
+.slick-dots li button:before { color: #f97316 !important; font-size: 10px !important; }
+.slick-prev:before, .slick-next:before { color: #f97316 !important; font-size: 24px !important; }
+
+/* Shimmer skeleton */
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+@keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+
+/* Floating animation for hero images */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+::selection { background: #f97316; color: #fff; }
+
+.hero-shell {
+  background: #e9e2d6;
+  background-image: linear-gradient(90deg, rgba(233, 226, 214, 0.98) 0%, rgba(233, 226, 214, 0.82) 42%, rgba(233, 226, 214, 0.12) 100%),
+    url('https://images.unsplash.com/photo-1558788353-f76d92427f16?w=2200&q=88&auto=format&fit=crop');
+  background-position: center, center right;
+  background-size: cover;
+}
+
+.hero-image-frame {
+  box-shadow: 24px 26px 0 rgba(236, 107, 44, 0.16), 0 28px 70px rgba(54, 38, 27, 0.22);
+  transform: rotate(2deg);
+}
+
+.hero-image-frame img { filter: saturate(0.92) contrast(1.04); }
+
+.eyebrow {
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.card {
+  border: 1px solid rgba(120, 92, 62, 0.1);
+  box-shadow: 0 16px 45px rgba(54, 38, 27, 0.09);
+}
+
+.card:hover { box-shadow: 0 24px 65px rgba(54, 38, 27, 0.16); }
+
+.btn-primary {
+  box-shadow: 0 12px 24px rgba(234, 88, 12, 0.22);
+  letter-spacing: 0.01em;
+}
+
+.section-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(120, 92, 62, 0.24), transparent);
+}
+
+.marquee-track { animation: marquee 22s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
